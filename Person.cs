@@ -11,7 +11,6 @@ public sealed class Person
         if (number != 1 && number != 2 || !result) throw new PersonException("Ошибка данных");
         ProcessEntered(number);
     }
-
     private void ProcessEntered(int number)
     {
         ProcessEvent?.Invoke(number);

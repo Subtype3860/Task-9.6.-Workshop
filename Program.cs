@@ -17,7 +17,6 @@ internal static class Program
                 Console.WriteLine($"Ошибка: {e}");
             }
         }
-
     }
     private static void ShowPerson(int number)
     {
