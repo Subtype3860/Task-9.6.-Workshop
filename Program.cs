@@ -6,6 +6,7 @@ internal static class Program
     {
         while (true)
         {
+            Console.WriteLine("==========");
             var person = new Person();
             person.ProcessEvent += ShowPerson;
             try
