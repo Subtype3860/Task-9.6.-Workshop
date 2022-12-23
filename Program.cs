@@ -15,7 +15,7 @@ internal static class Program
             }
             catch (PersonException e)
             {
-                Console.WriteLine($"Ошибка: {e}");
+                Console.WriteLine($"Ошибка: {e.Message}");
             }
         }
     }
