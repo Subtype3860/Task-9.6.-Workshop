@@ -1,47 +1,19 @@
-﻿namespace Task;
+﻿namespace Task_9._6._Workshop;
 
-
-public class Person
+public sealed class Person
 {
     public delegate void Notify(int number);
-    public event Notify ProcessCompleted;
-    private int _log;
-    private int Log
+    public event Notify? ProcessEvent;
+    public void SortPerson()
     {
-        get => _log;
-        set
-        {
-            if (value < 1 | value > 2)
-            {
-                throw new PersonException("Указано не верное значение", value);
-            }
-            else
-            {
-                _log = value;
-            }
-        }
+        Console.WriteLine("Для вывода списка фамилий в алфавитном порядке введите 1, в обратном порядке введите 2");
+        var result = int.TryParse(Console.ReadLine()!, out var number);
+        if (number != 1 && number != 2 || !result) throw new PersonException("Ошибка данных");
+        ProcessEntered(number);
     }
-    public Person(int log)
-    {
-        Log = log;
-    }
-    public void SortPerson(string[] person)
-    {
-        switch (_log)
-        {
-            case 1:
-                Array.Sort(person);
-                break;
-            case 2:
-                Array.Sort(person);
-                Array.Reverse(person);
-                break;
-        }
 
-        foreach (var s in person)
-        {
-            Console.WriteLine(s);
-        }
-        
+    private void ProcessEntered(int number)
+    {
+        ProcessEvent?.Invoke(number);
     }
 }

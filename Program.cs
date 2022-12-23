@@ -1,20 +1,40 @@
-﻿namespace Task;
+﻿namespace Task_9._6._Workshop;
 
-class Program
+internal static class Program
 {
     public static void Main()
     {
-        Console.WriteLine("Для вывода списка фамилий в алфавитном порядке введите 1, в обратном порядке введите 2");
-        var num = Console.ReadLine();
-        try
+        while (true)
         {
-            var arrey = new[] { "Ермолов", "Сомов", "Добрынин", "Барсуков", "Глушков" };
-            var person = new Person(2);
-            person.SortPerson(arrey);
+            var person = new Person();
+            person.ProcessEvent += ShowPerson;
+            try
+            {
+                person.SortPerson();
+            }
+            catch (PersonException e)
+            {
+                Console.WriteLine($"Ошибка: {e}");
+            }
         }
-        catch (PersonException e)
+
+    }
+    private static void ShowPerson(int number)
+    {
+        var arrey = new[] { "Ермолов", "Сомов", "Добрынин", "Барсуков", "Глушков" };
+        switch (number)
         {
-            Console.WriteLine($"Ошибка: {e}");
+            case 1:
+                Array.Sort(arrey);
+                break;
+            case 2:
+                Array.Sort(arrey);
+                Array.Reverse(arrey);
+                break;
+        }
+        foreach (var s in arrey)
+        {
+            Console.WriteLine(s);
         }
     }
 }

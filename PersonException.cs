@@ -1,11 +1,8 @@
-﻿namespace Task;
+﻿namespace Task_9._6._Workshop;
 
 public class PersonException: ArgumentException
 {
-    private int Value { get; }
-
-    public PersonException(string message, int val) : base(message)
+    public PersonException(string message) : base(message)
     {
-        Value = val;
     }
 }
